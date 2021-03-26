@@ -1,11 +1,6 @@
 # Images contrast adjuster
 Parallel contrast adjuster using OpenMP library.
 
-* [What's happening?](#what-s-happening-)
-* [Example](#example)
-* [Usage](#usage)
-* [Algorithm](#algorithm)
-
 ## What's happening?
 The task to familiarize with parallel programming and the openMP library possibilities
 
@@ -17,11 +12,24 @@ The input file contains data in PPM (P6) format.
 
 The output file will be a new image in the format PPM (P6).
 
-## Usage
-Console arguments:
-> `./main <num of threads> <input_file> <output_file>`
+## Run 
+Clone this repo: 
+> `git clone https://github.com/Dalvikk/contrast_adjuster`  
 
-The number of threads maybe 0, in that case, OpenMP self decide how many will use
+Compile using `g++` or `clang++`:  
+> `g++/clang++ main.cpp -std=c++14 -fopenmp -o contrast_adjuster`  
+
+or using `cmake`:
+> `mkdir build`  
+> `cd build`  
+> `cmake ..`  
+> `make (or mingw32-make if you use windows and mingw)`
+
+
+Run:
+> `./contrast_adjuster (or contrast_adjuster.exe) <num of threads> <input_file> <output_file>`
+
+The number of threads can be 0, in that case, OpenMP self decide how many will use
 
 ## Example
 
