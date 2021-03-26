@@ -2,6 +2,7 @@
 Parallel contrast adjuster using OpenMP library.
 
 * [What's happening?](#what-s-happening-)
+* [Example](#example)
 * [Usage](#usage)
 * [Algorithm](#algorithm)
 
@@ -21,6 +22,11 @@ Console arguments:
 > `./main <num of threads> <input_file> <output_file>`
 
 The number of threads maybe 0, in that case, OpenMP self decide how many will use
+
+## Example
+
+![example1](.github/images/example1.jpg)
+![example2](.github/images/example2.jpg)
 
 ## Algorithm
 
