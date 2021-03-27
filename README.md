@@ -8,15 +8,17 @@ Work with YCbCr.601 color space (previously translate from RGB).
 Let change the pixel values to obtain maximum contrast (range of values is [0..255]) without changing the color (hue).
 That can be achieved by linear adjusting the contrast in the luminance channel Y color space YCbCr (601 in the PC range: [0; 255]).
 
-The input file contains data in PPM (P6) format.
+The **input** file contains data in PPM (P6) format.   
+**The file doesn't contain comments. Maximum brightness value: 255**
 
-The output file will be a new image in the format PPM (P6).
+The **output** file will be a new image in the format PPM (P6).
 
 ## Run 
 Clone this repo: 
 > `git clone https://github.com/Dalvikk/contrast_adjuster`  
+> `cd contrast_adjuster`
 
-Compile using `g++` or `clang++`:  
+Compile using `g++/clang++`:  
 > `g++/clang++ main.cpp -std=c++14 -fopenmp -o contrast_adjuster`  
 
 or using `cmake`:
@@ -45,5 +47,5 @@ The number of threads can be 0, in that case, OpenMP self decide how many will u
    ![Formula](./.github/images/formula1.svg)   
    ![Constants](./.github/images/formula2.svg)
 3. Find min and max Y. Be careful to avoid [race condition](https://en.wikipedia.org/wiki/Race_condition)
-4. Linear adjusting the Y
+4. Linear adjusting Y values from [min_Y; max_Y] to [0, 255]
 5. Translate from YCbCr to RGB
