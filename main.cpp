@@ -145,16 +145,16 @@ public:
 
 
     void find_min_max() {
-        #pragma omp parallel default(none)
+#pragma omp parallel default(none)
         {
             double local_max = -1.00, local_min = 1.00;
-            #pragma omp for nowait schedule(static)
+#pragma omp for nowait schedule(static)
             for (size_t i = 0; i < width * height; ++i) {
                 pixels[i].calc_YCbCr_from_RGB();
                 local_max = std::max(local_max, pixels[i].Y);
                 local_min = std::min(local_min, pixels[i].Y);
             }
-            #pragma omp critical
+#pragma omp critical
             {
                 min_y = std::min(min_y, local_min);
                 max_y = std::max(max_y, local_max);
@@ -163,9 +163,9 @@ public:
     }
 
     void color_adjustments() {
-        #pragma omp parallel default(none)
+#pragma omp parallel default(none)
         {
-            #pragma omp for nowait schedule(static)
+#pragma omp for nowait schedule(static)
             for (size_t i = 0; i < width * height; i++) {
                 if (max_y != min_y) {
                     pixels[i].Y = (pixels[i].Y - min_y) / (max_y - min_y);
@@ -183,7 +183,8 @@ public:
         }
         try {
             fwrite("P6\n", 3, 1, fp);
-            std::string res = std::to_string(height) + " " + std::to_string(width) + "\n" + std::to_string(max_brightness) + "\n";
+            std::string res =
+                    std::to_string(height) + " " + std::to_string(width) + "\n" + std::to_string(max_brightness) + "\n";
             fwrite(res.c_str(), res.length(), 1, fp);
             for (size_t i = 0; i < width * height; i++) {
                 tmp[0] = pixels[i].getR();
@@ -227,7 +228,7 @@ int main(int argc, char *argv[]) {
         image->find_min_max();
         image->color_adjustments();
         double finish = omp_get_wtime();
-        printf("Time: %f ms\n", (finish - start) * 1000);
+        printf("Threads: %s, time: %f ms\n", argv[1], (finish - start) * 1000);
         image->save(fp2);
     } catch (std::exception &exception) {
         std::cout << "Error: " << exception.what() << "\n";
