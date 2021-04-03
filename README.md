@@ -1,6 +1,11 @@
 # Images contrast adjuster
 Parallel contrast adjuster using OpenMP library.
 
+## Example
+
+![example1](.github/images/example1.jpg)
+![example2](.github/images/example2.jpg)
+
 ## What's happening?
 The task to familiarize with parallel programming and the OpenMP library possibilities
 
@@ -61,10 +66,6 @@ Run:
 
 The number of threads can be 0, in that case, OpenMP self decide how many will use
 
-## Example
-
-![example1](.github/images/example1.jpg)
-![example2](.github/images/example2.jpg)
 
 ## Algorithm
 
