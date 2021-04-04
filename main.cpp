@@ -14,10 +14,6 @@ public:
     const char *what() const noexcept override {
         return msg;
     }
-
-    ~my_exception() noexcept override {
-        delete msg;
-    }
 };
 
 class file_read_exception : my_exception {
