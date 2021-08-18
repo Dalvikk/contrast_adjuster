@@ -1,6 +1,5 @@
 #include <iostream>
 #include <omp.h>
-#include <cmath>
 #include <exception>
 #include <fstream>
 #include "image_ppm.h"

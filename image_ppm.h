@@ -27,9 +27,9 @@ private:
 		uint8_t get_g() const noexcept;
 		uint8_t get_b() const noexcept;
 	private:
-		constexpr static const double kr = 0.299;
-		constexpr static const double kg = 0.587;
-		constexpr static const double kb = 0.114;
+		constexpr static double kr = 0.299;
+		constexpr static double kg = 0.587;
+		constexpr static double kb = 0.114;
 	};
 
 	void update_min_max_y() noexcept;
